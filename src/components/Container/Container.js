@@ -6,12 +6,15 @@ const Container = styled.div`
     margin: 0 auto;
     width: 100%;
     max-width: ${({ maxWidth }) => maxWidth}px;
-    padding-left: ${({ noPadding, theme }) => noPadding ? 0 : theme.gutter}px;
-    padding-right: ${({ noPadding, theme }) => noPadding ? 0 : theme.gutter}px;
+    padding-left: ${({ noPadding, theme }) => (noPadding ? 0 : theme.gutter)}px;
+    padding-right: ${({ noPadding, theme }) =>
+        noPadding ? 0 : theme.gutter}px;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-        padding-left: ${({ noPadding, theme }) => noPadding ? 0 : theme.gutter * 1.5}px;
-        padding-right: ${({ noPadding, theme }) => noPadding ? 0 : theme.gutter * 1.5}px;
+        padding-left: ${({ noPadding, theme }) =>
+            noPadding ? 0 : theme.gutter * 1.5}px;
+        padding-right: ${({ noPadding, theme }) =>
+            noPadding ? 0 : theme.gutter * 1.5}px;
     }
 `;
 
