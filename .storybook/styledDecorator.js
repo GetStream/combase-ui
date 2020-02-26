@@ -1,6 +1,6 @@
-import React from "react"
-import { ThemeProvider } from "styled-components"
-import { light } from "../src/styles/theme"
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { light } from '../src/styles/theme';
 import GlobalStyles from '../src/styles/global';
 
 const ThemeDecorator = storyFn => (
@@ -10,6 +10,6 @@ const ThemeDecorator = storyFn => (
             <GlobalStyles />
         </>
     </ThemeProvider>
-)
+);
 
-export default ThemeDecorator
+export default ThemeDecorator;

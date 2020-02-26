@@ -10,7 +10,7 @@ export default css`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         -webkit-text-fill-color: ${({ theme }) =>
-        theme.color.alt_text} !important;
+            theme.color.alt_text} !important;
         -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.color.surface}
             inset !important;
     }

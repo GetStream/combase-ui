@@ -32,9 +32,10 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "yarn lint && babel src --out-dir dist",
     "start": "node dist/index.js",
     "dev": "npx babel-node src/index.js",
+    "lint": "yarn prettier --write --check --config ./.prettierrc \"**/*.js\" && eslint --fix ./src",
     "test": "npx babel-node examples/index.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
