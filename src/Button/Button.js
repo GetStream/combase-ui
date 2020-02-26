@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // CSS //
-import listItemInteractions from '../../styles/css/listItemInteractions';
+import listItemInteractions from '../styles/css/listItemInteractions';
 
 // Components //
 import Text from '../Text';
@@ -17,35 +17,35 @@ const Root = styled.button`
     box-shadow: ${({ color, disabled, flat, theme }) =>
         !disabled && !flat
             ? `0px 1px 4px ${theme.colorUtils.fade(
-                  theme.colorUtils.darken(theme.color[color], 0.1),
-                  0.4
-              )}`
+                theme.colorUtils.darken(theme.color[color], 0.1),
+                0.4
+            )}`
             : null};
     background-color: ${({ disabled, flat, color, theme }) =>
         flat
             ? 'transparent'
             : disabled
-            ? theme.color.disabled
-            : theme.color[color]};
+                ? theme.color.disabled
+                : theme.color[color]};
     ${({ color, disabled, flat, theme }) =>
         !disabled
             ? flat
                 ? listItemInteractions
                 : `
             transition: 0.24s background-color ${theme.easing.css(
-                theme.easing.standard
-            )};
+                    theme.easing.standard
+                )};
         &:hover {
             background-color: ${theme.colorUtils.darken(
-                theme.color[color],
-                0.05
-            )}
+                    theme.color[color],
+                    0.05
+                )}
         }
         &:active {
             background-color: ${theme.colorUtils.darken(
-                theme.color[color],
-                0.15
-            )}
+                    theme.color[color],
+                    0.15
+                )}
         }
     `
             : null};
@@ -66,16 +66,16 @@ const Button = ({
     onClick,
     type,
 }) => (
-    <Root
-        activeColor={color}
-        hasIcon={!!Icon}
-        onClick={!disabled ? onClick : null}
-        {...{ className, color, disabled, flat, type }}
-    >
-        {Icon ? <Icon color={flat ? color : 'surface'} /> : null}
-        <Text color={flat ? color : 'surface'}>{label}</Text>
-    </Root>
-);
+        <Root
+            activeColor={color}
+            hasIcon={!!Icon}
+            onClick={!disabled ? onClick : null}
+            {...{ className, color, disabled, flat, type }}
+        >
+            {Icon ? <Icon color={flat ? color : 'surface'} /> : null}
+            <Text color={flat ? color : 'surface'}>{label}</Text>
+        </Root>
+    );
 
 Button.propTypes = {
     color: PropTypes.string,
