@@ -13,10 +13,10 @@ const Root = styled.div`
 `;
 
 const IconBubble = ({ color, icon: Icon, iconColor, size }) => (
-        <Root {...{ color, size }}>
-            {Icon ? <Icon color={iconColor} size={size / 2} /> : null}
-        </Root>
-    );
+    <Root {...{ color, size }}>
+        {Icon ? <Icon color={iconColor} size={size / 2} /> : null}
+    </Root>
+);
 
 IconBubble.propTypes = {
     color: PropTypes.string,
