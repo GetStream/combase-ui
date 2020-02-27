@@ -22,6 +22,7 @@ export { default as InboxIcon } from './icons/inbox';
 export { default as InfoIcon } from './icons/info';
 export { default as JobTitleIcon } from './icons/job_title';
 export { default as KnowledgeBaseIcon } from './icons/knowledge_base';
+export { default as LightningIcon } from './icons/lightning';
 export { default as LinkIcon } from './icons/link';
 export { default as LocationIcon } from './icons/location';
 export { default as MailIcon } from './icons/mail';
