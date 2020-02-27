@@ -29,6 +29,7 @@
   },
   "peerDependencies": {
     "browser-monads": "^1.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-spring": "^8.0.27",
     "styled-components": "^5.0.1"
