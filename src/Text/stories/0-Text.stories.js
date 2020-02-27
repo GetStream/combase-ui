@@ -44,6 +44,6 @@ export const Paragraph = () => (
         faded={boolean('faded', false)}
         weight={select('weight', weightOptions, '400')}
     >
-        Hey There! Play around with my props in the Knobs tab.
+        {text('text', 'Hey There! Play around with my props in the Knobs tab.')}
     </Text>
 );
