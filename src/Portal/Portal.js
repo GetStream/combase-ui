@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { document } from 'browser-monads';
 
 // Utils //
 function getContainer(container, defaultContainer) {

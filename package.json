@@ -28,6 +28,7 @@
     "styled-components": "^5.0.1"
   },
   "peerDependencies": {
+    "browser-monads": "^1.0.0",
     "react": "^16.12.0",
     "styled-components": "^5.0.1"
   },
