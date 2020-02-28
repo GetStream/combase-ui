@@ -10,7 +10,7 @@ import baseInputStyle from '../styles/css/baseInputStyle';
 import usePrevious from '../hooks/usePrevious';
 
 // Components //
-import AutoSizeTextArea from '../AutoSizeTextArea';
+import AutosizeTextArea from '../AutosizeTextArea';
 import Card from '../Card';
 import Text from '../Text';
 
@@ -191,13 +191,13 @@ const Input = ({
                         onFocus={handleFocus}
                     />
                 ) : (
-                    <AutoSizeTextArea
-                        {...{ focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
+                        <AutosizeTextArea
+                            {...{ focused, name, type, value }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                        />
+                    )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
