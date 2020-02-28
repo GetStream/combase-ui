@@ -164,7 +164,7 @@ const Input = ({
     );
 
     return (
-        <Wrapper>
+        <div>
             <Label>
                 <Text
                     color="primary"
@@ -191,13 +191,13 @@ const Input = ({
                         onFocus={handleFocus}
                     />
                 ) : (
-                    <AutoSizeTextArea
-                        {...{ focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
+                        <AutoSizeTextArea
+                            {...{ focused, name, type, value }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                        />
+                    )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
@@ -225,7 +225,7 @@ const Input = ({
                     {error || prevError}
                 </Text>
             </ErrorRow>
-        </Wrapper>
+        </div>
     );
 };
 
