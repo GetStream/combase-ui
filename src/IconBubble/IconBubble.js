@@ -6,15 +6,18 @@ import styled from 'styled-components';
 const Root = styled.div`
     width: ${({ size }) => size}px;
     height: ${({ size }) => size}px;
-    background-color: ${({ color, theme, twotone }) => theme.colorUtils.fade(theme.color[color], twotone ? .24 : 1)};
+    background-color: ${({ color, theme, twotone }) =>
+        theme.colorUtils.fade(theme.color[color], twotone ? 0.24 : 1)};
     justify-content: center;
     align-items: center;
     border-radius: 50%;
 `;
 
-const IconBubble = ({ color, icon: Icon, iconColor, size }) => (
+const IconBubble = ({ color, icon: Icon, iconColor, size, twotone }) => (
     <Root {...{ color, size, twotone }}>
-        {Icon ? <Icon color={twotone ? color : iconColor} size={size / 2} /> : null}
+        {Icon ? (
+            <Icon color={twotone ? color : iconColor} size={size / 2} />
+        ) : null}
     </Root>
 );
 
