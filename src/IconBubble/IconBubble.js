@@ -6,15 +6,15 @@ import styled from 'styled-components';
 const Root = styled.div`
     width: ${({ size }) => size}px;
     height: ${({ size }) => size}px;
-    background-color: ${({ color, theme }) => theme.color[color]};
+    background-color: ${({ color, theme, twotone }) => theme.colorUtils.fade(theme.color[color], twotone ? .24 : 1)};
     justify-content: center;
     align-items: center;
     border-radius: 50%;
 `;
 
 const IconBubble = ({ color, icon: Icon, iconColor, size }) => (
-    <Root {...{ color, size }}>
-        {Icon ? <Icon color={iconColor} size={size / 2} /> : null}
+    <Root {...{ color, size, twotone }}>
+        {Icon ? <Icon color={twotone ? color : iconColor} size={size / 2} /> : null}
     </Root>
 );
 
@@ -23,12 +23,14 @@ IconBubble.propTypes = {
     icon: PropTypes.func,
     iconColor: PropTypes.string,
     size: PropTypes.number,
+    twotone: PropTypes.bool,
 };
 
 IconBubble.defaultProps = {
     color: 'primary',
     iconColor: 'surface',
     size: 56,
+    twotone: false,
 };
 
 export default IconBubble;
