@@ -45,3 +45,4 @@ export { default as TransferIcon } from './icons/transfer';
 export { default as UnarchiveIcon } from './icons/unarchive';
 export { default as UserSettingsIcon } from './icons/user_settings';
 export { default as UserIcon } from './icons/user';
+export { default as WebhooksIcon } from './icons/webhooks';
