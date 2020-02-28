@@ -22,6 +22,7 @@ const Root = styled(Card)`
 
     & > input {
         flex: 1;
+        font-weight: 500;
         ${baseInputStyle}
     }
 
@@ -45,6 +46,7 @@ const Label = styled.div`
     overflow: hidden;
     user-select: none;
     & ${Text} {
+        align-self: flex-start;
         padding: 4px 0px;
     }
 `;
@@ -63,6 +65,7 @@ const ErrorRow = styled.div`
     padding: 0px 12px;
     height: 16px;
     & ${Text} {
+        align-self: flex-start;
         padding: 4px 0px;
     }
 `;
@@ -161,7 +164,7 @@ const Input = ({
     );
 
     return (
-        <div>
+        <Wrapper>
             <Label>
                 <Text
                     color="primary"
@@ -188,13 +191,13 @@ const Input = ({
                         onFocus={handleFocus}
                     />
                 ) : (
-                    <AutoSizeTextArea
-                        {...{ focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
+                        <AutoSizeTextArea
+                            {...{ focused, name, type, value }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                        />
+                    )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
@@ -216,12 +219,13 @@ const Input = ({
                     color="error"
                     size={12}
                     line={12}
+                    weight="500"
                     style={errorStyle}
                 >
                     {error || prevError}
                 </Text>
             </ErrorRow>
-        </div>
+        </Wrapper>
     );
 };
 
