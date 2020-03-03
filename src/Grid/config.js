@@ -1,11 +1,11 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
-const THEME_CONF = "flexboxgrid";
+const THEME_CONF = 'flexboxgrid';
 export const BASE_CONF = {
     gridSize: 12,
     gutterWidth: 2,
     outerMargin: 2,
-    mediaQuery: "only screen",
+    mediaQuery: 'only screen',
     container: {
         sm: 46,
         md: 61,
@@ -46,7 +46,7 @@ const resolveConfig = props => {
                 breakpoint !== 0 && `(min-width: ${breakpointWidth}em)`,
             ]
                 .filter(Boolean)
-                .join(" and "),
+                .join(' and ')
         );
         return media;
     }, {});
@@ -54,7 +54,7 @@ const resolveConfig = props => {
     return conf;
 };
 
-export const DIMENSION_NAMES = ["xs", "sm", "md", "lg"];
+export const DIMENSION_NAMES = ['xs', 'sm', 'md', 'lg'];
 
 export default function config(props) {
     const cacheId = makeCacheId(props);
