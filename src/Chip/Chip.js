@@ -13,15 +13,13 @@ const Root = styled.div`
     }
 `;
 
-const Chip = memo(({ color, label, onClick, size, textColor }) => {
-    return (
+const Chip = memo(({ color, label, onClick, size, textColor }) => (
         <Root {...{ color, onClick, size }}>
             <Text color={textColor} {...{ size }}>
                 {label}
             </Text>
         </Root>
-    );
-});
+    ));
 
 Chip.defaultProps = {
     color: 'primary',
