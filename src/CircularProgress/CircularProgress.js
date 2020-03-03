@@ -1,21 +1,21 @@
-import React, { useEffect, useMemo, useState } from "react"
-import PropTypes from "prop-types"
-import styled, { withTheme } from "styled-components"
-import { animated as Animated, useSpring } from "react-spring"
+import React, { useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
+import styled, { withTheme } from 'styled-components';
+import { animated as Animated, useSpring } from 'react-spring';
 
 // Components //
 const Root = styled.svg`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
-  fill: none;
-  transform: rotate(180deg) scaleX(-1);
+    width: ${({ size }) => size}px;
+    height: ${({ size }) => size}px;
+    fill: none;
+    transform: rotate(180deg) scaleX(-1);
 
-  & text {
-    user-select: none;
-    text-anchor: middle;
-    transform: translate(9px, 43px) rotate(-180deg) scaleX(-1);
-  }
-`
+    & text {
+        user-select: none;
+        text-anchor: middle;
+        transform: translate(9px, 43px) rotate(-180deg) scaleX(-1);
+    }
+`;
 
 const CircularProgress = ({
     animated,
@@ -25,48 +25,43 @@ const CircularProgress = ({
     theme,
     ...props
 }) => {
-    const [animate, setAnimate] = useState(false)
+    const [animate, setAnimate] = useState(false);
     useEffect(() => {
         if (animated) {
-            setAnimate(true)
+            setAnimate(true);
         }
-    }, [animate, animated])
+    }, [animate, animated]);
     const { value: anim } = useSpring({
         value: animated ? (animate ? value : 0) : value,
         config: { mass: 5, tension: 500, friction: 80 },
-    })
+    });
     const { value: textAnim } = useSpring({
         value: animated ? (animate ? value : 0) : value,
         config: { mass: 5, tension: 500, friction: 80, clamp: true },
-    })
+    });
 
     const countValue = animated
-        ? textAnim
-            .interpolate(v => Math.floor(v))
-        : value
+        ? textAnim.interpolate(v => Math.floor(v))
+        : value;
 
-    const style = useMemo(() => {
-        return animated
+    const style = useMemo(() => animated
             ? {
-                opacity: anim.interpolate({
-                    range: [0, 0.0000001],
-                    output: [0, 1],
-                }),
-                strokeDasharray: anim.interpolate(v => `${v}, 100000`),
-            }
-            : {}
-    }, [anim, animated])
+                  opacity: anim.interpolate({
+                      range: [0, 0.0000001],
+                      output: [0, 1],
+                  }),
+                  strokeDasharray: anim.interpolate(v => `${v}, 100000`),
+              }
+            : {}, [anim, animated]);
 
-    const textStyle = useMemo(() => {
-        return animated
+    const textStyle = useMemo(() => animated
             ? {
-                opacity: anim.interpolate({
-                    range: [0, 0.0000001],
-                    output: [0, 1],
-                }),
-            }
-            : {}
-    }, [anim, animated])
+                  opacity: anim.interpolate({
+                      range: [0, 0.0000001],
+                      output: [0, 1],
+                  }),
+              }
+            : {}, [anim, animated]);
 
     return (
         <Root color="transparent" viewBox="0 0 40 40" {...props} {...{ value }}>
@@ -102,8 +97,8 @@ const CircularProgress = ({
                 ) : null}
             </g>
         </Root>
-    )
-}
+    );
+};
 
 CircularProgress.propTypes = {
     animated: PropTypes.bool,
@@ -111,13 +106,13 @@ CircularProgress.propTypes = {
     showCount: PropTypes.bool,
     size: PropTypes.number,
     value: PropTypes.number.isRequired,
-}
+};
 
 CircularProgress.defaultProps = {
     animated: false,
-    color: "primary",
+    color: 'primary',
     showCount: true,
     size: 40,
-}
+};
 
-export default withTheme(CircularProgress)
+export default withTheme(CircularProgress);
