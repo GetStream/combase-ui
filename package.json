@@ -24,11 +24,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
-    "react-is": "^16.12.0",
-    "styled-components": "^5.0.1"
+    "react-is": "^16.12.0"
   },
   "peerDependencies": {
-    "browser-monads": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-spring": "^8.0.27",

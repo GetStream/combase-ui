@@ -72,6 +72,7 @@ const ErrorRow = styled.div`
 
 const Input = ({
     error,
+    disabled,
     icon: Icon,
     name,
     onBlur,
@@ -185,19 +186,19 @@ const Input = ({
                 ) : null}
                 {!textarea ? (
                     <input
-                        {...{ focused, name, type, value }}
+                        {...{ disabled, focused, name, type, value }}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         onFocus={handleFocus}
                     />
                 ) : (
-                    <AutosizeTextArea
-                        {...{ focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
+                        <AutosizeTextArea
+                            {...{ disabled, focused, name, type, value }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                        />
+                    )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
@@ -230,6 +231,7 @@ const Input = ({
 };
 
 Input.propTypes = {
+    disabled: PropTypes.bool,
     icon: PropTypes.any,
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
