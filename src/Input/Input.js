@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
@@ -192,13 +192,13 @@ const Input = ({
                         onFocus={handleFocus}
                     />
                 ) : (
-                    <AutosizeTextArea
-                        {...{ disabled, focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
+                        <AutosizeTextArea
+                            {...{ disabled, focused, name, type, value }}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                        />
+                    )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
