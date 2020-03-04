@@ -14,15 +14,18 @@ const Undersheet = styled.div`
 
 const ColorInput = ({ name, onChange, value, ...props }) => {
     const [show, toggle] = useState(false);
-    const handleChange = useCallback((color) => {
-        toggle(!show);
-        return onChange({
-            target: {
-                name,
-                value: color.hex
-            }
-        })
-    }, [name, onChange, show]);
+    const handleChange = useCallback(
+        color => {
+            toggle(!show);
+            return onChange({
+                target: {
+                    name,
+                    value: color.hex,
+                },
+            });
+        },
+        [name, onChange, show]
+    );
 
     const togglePicker = useCallback(() => {
         toggle(!show);
@@ -30,21 +33,36 @@ const ColorInput = ({ name, onChange, value, ...props }) => {
 
     const popoverRef = useRef();
 
-    const handleClose = useCallback((e) => {
+    const handleClose = useCallback(e => {
         toggle(false);
     }, []);
 
-    const popoverStyle = useMemo(() => ({
-        position: "absolute",
-        top: "100%",
-        zIndex: 10,
-    }), []);
+    const popoverStyle = useMemo(
+        () => ({
+            position: 'absolute',
+            top: '100%',
+            zIndex: 10,
+        }),
+        []
+    );
 
     return (
         <div>
-            <Input {...props} {...{ value }} onClick={!show ? togglePicker : null} disabled />
+            <Input
+                {...props}
+                {...{ value }}
+                onClick={!show ? togglePicker : null}
+                disabled
+            />
             {show ? <Undersheet onClick={handleClose} /> : null}
-            {show ? <div id="popoverWrapper" ref={popoverRef} style={popoverStyle}><TwitterPicker onChangeComplete={handleChange} color={value} /></div> : null}
+            {show ? (
+                <div id="popoverWrapper" ref={popoverRef} style={popoverStyle}>
+                    <TwitterPicker
+                        onChangeComplete={handleChange}
+                        color={value}
+                    />
+                </div>
+            ) : null}
         </div>
     );
 };
