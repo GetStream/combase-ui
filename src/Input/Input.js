@@ -192,13 +192,13 @@ const Input = ({
                         onFocus={handleFocus}
                     />
                 ) : (
-                        <AutosizeTextArea
-                            {...{ disabled, focused, name, type, value }}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            onFocus={handleFocus}
-                        />
-                    )}
+                    <AutosizeTextArea
+                        {...{ disabled, focused, name, type, value }}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        onFocus={handleFocus}
+                    />
+                )}
                 {placeholder ? (
                     <Placeholder {...{ textarea }} hasIcon={!!Icon}>
                         <Text
