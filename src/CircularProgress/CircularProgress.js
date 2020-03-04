@@ -44,24 +44,32 @@ const CircularProgress = ({
         ? textAnim.interpolate(v => Math.floor(v))
         : value;
 
-    const style = useMemo(() => animated
-            ? {
-                  opacity: anim.interpolate({
-                      range: [0, 0.0000001],
-                      output: [0, 1],
-                  }),
-                  strokeDasharray: anim.interpolate(v => `${v}, 100000`),
-              }
-            : {}, [anim, animated]);
+    const style = useMemo(
+        () =>
+            animated
+                ? {
+                      opacity: anim.interpolate({
+                          range: [0, 0.0000001],
+                          output: [0, 1],
+                      }),
+                      strokeDasharray: anim.interpolate(v => `${v}, 100000`),
+                  }
+                : {},
+        [anim, animated]
+    );
 
-    const textStyle = useMemo(() => animated
-            ? {
-                  opacity: anim.interpolate({
-                      range: [0, 0.0000001],
-                      output: [0, 1],
-                  }),
-              }
-            : {}, [anim, animated]);
+    const textStyle = useMemo(
+        () =>
+            animated
+                ? {
+                      opacity: anim.interpolate({
+                          range: [0, 0.0000001],
+                          output: [0, 1],
+                      }),
+                  }
+                : {},
+        [anim, animated]
+    );
 
     return (
         <Root color="transparent" viewBox="0 0 40 40" {...props} {...{ value }}>
