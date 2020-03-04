@@ -9,13 +9,15 @@ export { default as ColorInput } from './ColorInput';
 export { default as Container } from './Container';
 export { default as FAB } from './FAB';
 export { default as Fill } from './Fill';
-export { default as Input } from './Input';
-export { default as Text } from './Text';
 export { default as Icon } from './Icons';
 export { default as IconBubble } from './IconBubble';
 export { default as IconButton } from './IconButton';
+export { default as Input } from './Input';
+export { default as ListItem } from './ListItem';
+export { default as PlaceholderIcon } from './PlaceholderIcon';
 export { default as Portal } from './Portal';
 export { default as StatusBadge } from './StatusBadge';
+export { default as Text } from './Text';
 
 import * as themes from './styles/theme';
 export { themes };
