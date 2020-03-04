@@ -5,6 +5,7 @@ export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Chip } from './Chip';
 export { default as CircularProgress } from './CircularProgress';
+export { default as ColorInput } from './ColorInput';
 export { default as Container } from './Container';
 export { default as FAB } from './FAB';
 export { default as Fill } from './Fill';
