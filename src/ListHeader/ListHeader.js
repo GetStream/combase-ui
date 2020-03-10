@@ -50,7 +50,7 @@ const SearchWrapper = styled.div`
     }
 `;
 
-const MenuBtn = styled(MenuButton)`
+const LeftElement = styled.div`
     margin-right: 16px;
 `;
 
@@ -89,7 +89,7 @@ const ListHeader = ({
         <Root {...{ bgColor, style }}>
             <TitleWrapper {...{ bgColor, showSearch }}>
                 <Title>
-                    {LeftBtnElement ? <LeftBtnElement /> : null}
+                    {LeftBtnElement ? <LeftElement as={LeftBtnElement} /> : null}
                     {Icon ? <Icon color="text" size={24} /> : null}
                     <Text size={isMobile ? 20 : 24} weight="600">
                         {title}

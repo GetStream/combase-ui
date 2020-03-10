@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SearchIcon } from "../Icons";
+import { SearchIcon } from '../Icons';
 
 // Components //
 const Root = styled.div`
@@ -22,8 +22,7 @@ const Input = styled.input`
     padding-right: 12px;
 `;
 
-const SearchInput = () => {
-    return (
+const SearchInput = () => (
         <Root>
             <IconWrapper>
                 <SearchIcon color="gray" />
@@ -31,6 +30,5 @@ const SearchInput = () => {
             <Input placeholder="Search..." />
         </Root>
     );
-};
 
 export default SearchInput;
