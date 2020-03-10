@@ -41,18 +41,14 @@ const asInput = WrappedComponent => ({
         [disabled, onBlur]
     );
 
-    const handleChange = useCallback(
-        e => {
-            if (onChange) {
-                onChange(e);
-            }
+    useEffect(() => {
+        if (value) {
             dispatch({
                 type: 'Input/Change',
-                hasValue: isValid(e.target.value),
+                hasValue: isValid(value),
             });
-        },
-        [onChange]
-    );
+        }
+    }, [value])
 
     const handleFocus = useCallback(
         e => {
@@ -69,7 +65,7 @@ const asInput = WrappedComponent => ({
             maxLength,
             name,
             onBlur: handleBlur,
-            onChange: handleChange,
+            onChange,
             onFocus: handleFocus,
             type,
             value,
