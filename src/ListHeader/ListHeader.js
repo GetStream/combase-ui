@@ -1,59 +1,58 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Animated from "animated/lib/targets/react-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Animated from 'animated/lib/targets/react-dom';
 
 // Hooks //
-import useMedia from "hooks/useMedia";
+import useMedia from 'hooks/useMedia';
 
 // Components //
 import ActionsGroup from '../ActionsGroup';
-import MenuButton from "../MenuButton";
-import SearchInput from "../SearchInput";
+import SearchInput from '../SearchInput';
 import Text from '../Text';
 
 const Root = styled(Animated.div)`
-  position: sticky;
-  top: -56px;
-  z-index: 1;
-  background-color: ${({ bgColor, theme }) => theme.color[bgColor]};
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    top: -80px;
-  }
+    position: sticky;
+    top: -56px;
+    z-index: 1;
+    background-color: ${({ bgColor, theme }) => theme.color[bgColor]};
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        top: -80px;
+    }
 `;
 
 const TitleWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  background-color: ${({ bgColor, theme }) => theme.color[bgColor]};
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    padding: 24px 32px 24px 32px;
-  }
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: ${({ bgColor, theme }) => theme.color[bgColor]};
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        padding: 24px 32px 24px 32px;
+    }
 `;
 
 const Title = styled.div`
-  flex-direction: row;
-  align-items: center;
-  & > ${Text} {
-    margin-left: 8px;
-  }
+    flex-direction: row;
+    align-items: center;
+    & > ${Text} {
+        margin-left: 8px;
+    }
 `;
 
 const SearchWrapper = styled.div`
-  padding: 0px 16px 16px 16px;
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    padding: 0px 24px 24px 24px;
-  }
+    padding: 0px 16px 16px 16px;
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        padding: 0px 24px 24px 24px;
+    }
 `;
 
 const MenuBtn = styled(MenuButton)`
-  margin-right: 16px;
-`
+    margin-right: 16px;
+`;
 
 let interpolation;
 
@@ -66,12 +65,12 @@ const getShadowStyle = scrollAnim => {
         interpolation = scrollAnim.interpolate({
             inputRange: [0, 48],
             outputRange: [0, 0.12],
-            extrapolate: "clamp"
+            extrapolate: 'clamp',
         });
     }
 
     return {
-        boxShadow: Animated.template`0px 4px 24px rgba(0, 0, 0, ${interpolation})`
+        boxShadow: Animated.template`0px 4px 24px rgba(0, 0, 0, ${interpolation})`,
     };
 };
 
@@ -79,17 +78,18 @@ const ListHeader = ({
     bgColor,
     children,
     icon: Icon,
+    leftButtonElement: LeftBtnElement,
     scrollAnim,
     showSearch,
-    title
+    title,
 }) => {
     const style = getShadowStyle(scrollAnim);
-    const isMobile = useMedia("sm");
+    const isMobile = useMedia('sm');
     return (
         <Root {...{ bgColor, style }}>
             <TitleWrapper {...{ bgColor, showSearch }}>
                 <Title>
-                    <MenuBtn />
+                    {LeftBtnElement ? <LeftBtnElement /> : null}
                     {Icon ? <Icon color="text" size={24} /> : null}
                     <Text size={isMobile ? 20 : 24} weight="600">
                         {title}
@@ -109,13 +109,13 @@ const ListHeader = ({
 ListHeader.propTypes = {
     bgColor: PropTypes.string,
     showSearch: PropTypes.bool,
-    title: PropTypes.string
+    title: PropTypes.string,
 };
 
 ListHeader.defaultProps = {
-    bgColor: "background",
+    bgColor: 'background',
     showSearch: true,
-    title: "Title"
+    title: 'Title',
 };
 
 export default ListHeader;
