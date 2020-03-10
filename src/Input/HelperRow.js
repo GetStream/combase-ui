@@ -31,7 +31,10 @@ const Content = styled.div`
 
 const HelperRow = ({ error, helperText }) => {
     const prevError = usePrevious(error);
-    const anim = useSpring({ value: error ? 1 : 0, config: { mass: 1, tension: 500, friction: 30 } });
+    const anim = useSpring({
+        value: error ? 1 : 0,
+        config: { mass: 1, tension: 500, friction: 30 },
+    });
     const errorStyle = useMemo(
         () => ({
             opacity: anim.value,
@@ -49,7 +52,7 @@ const HelperRow = ({ error, helperText }) => {
         () => ({
             opacity: anim.value.interpolate({
                 range: [0, 1],
-                output: [1, 0]
+                output: [1, 0],
             }),
             transform: anim.value
                 .interpolate({
@@ -71,7 +74,13 @@ const HelperRow = ({ error, helperText }) => {
                 </animated.div>
                 {helperText ? (
                     <animated.div style={helperStyle}>
-                        <Text size={12} line={12} weight="500" color="alt_text" faded>
+                        <Text
+                            size={12}
+                            line={12}
+                            weight="500"
+                            color="alt_text"
+                            faded
+                        >
                             {helperText}
                         </Text>
                     </animated.div>
@@ -84,6 +93,6 @@ const HelperRow = ({ error, helperText }) => {
 HelperRow.propTypes = {
     error: PropTypes.string,
     helperText: PropTypes.string,
-}
+};
 
 export default HelperRow;
