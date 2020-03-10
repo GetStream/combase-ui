@@ -47,6 +47,11 @@ const asInput = WrappedComponent => ({
                 type: 'Input/Change',
                 hasValue: isValid(value),
             });
+        } else {
+            dispatch({
+                type: 'Input/Change',
+                hasValue: false,
+            });
         }
     }, [value]);
 
