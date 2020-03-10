@@ -15,6 +15,7 @@ export { default as Icon } from './Icons';
 export { default as IconBubble } from './IconBubble';
 export { default as IconButton } from './IconButton';
 export { default as Input } from './Input';
+export { default as ListHeader } from './ListHeader';
 export { default as ListItem } from './ListItem';
 export { default as ListView } from './ListView';
 export { default as PlaceholderIcon } from './PlaceholderIcon';

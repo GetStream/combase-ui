@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { Text } from '@comba.se/ui';
+import Text from '../Text';
 
 // Components //
 const Root = styled.div`
