@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'; // eslint-disable-line no-unused-vars
 import { ThemeContext } from 'styled-components';
+import { window } from 'browser-monads';
 
 export default (breakpoint, minmax = 'min') => {
     const [matches, setMatch] = useState(false);

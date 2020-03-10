@@ -5,7 +5,8 @@ const defaultOptions = {
     box: 'border-box',
 };
 
-export default (WrappedComponent, observerOptions = defaultOptions) => class withResize extends Component {
+export default (WrappedComponent, observerOptions = defaultOptions) =>
+    class withResize extends Component {
         ref = React.createRef();
 
         state = {
