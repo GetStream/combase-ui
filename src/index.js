@@ -1,4 +1,4 @@
-export { default as ActionsGroup } from './ActionsGroup'; 
+export { default as ActionsGroup } from './ActionsGroup';
 export { default as AutosizeTextArea } from './AutosizeTextArea';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
