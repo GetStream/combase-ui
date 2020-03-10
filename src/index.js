@@ -18,6 +18,7 @@ export { default as Input } from './Input';
 export { default as ListHeader } from './ListHeader';
 export { default as ListItem } from './ListItem';
 export { default as ListView } from './ListView';
+export { default as LoadingState } from './LoadingState';
 export { default as PlaceholderIcon } from './PlaceholderIcon';
 export { default as Portal } from './Portal';
 export { default as SearchInput } from './SearchInput';
