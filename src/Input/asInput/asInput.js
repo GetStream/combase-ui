@@ -1,4 +1,4 @@
-import React, { useCallback, useEFfect, useMemo, useReducer } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring } from 'react-spring';
 import reducer from './reducer';
