@@ -8,6 +8,7 @@ export { default as Chip } from './Chip';
 export { default as CircularProgress } from './CircularProgress';
 export { default as ColorInput } from './ColorInput';
 export { default as Container } from './Container';
+export { default as EmptyState } from './EmptyState';
 export { default as FAB } from './FAB';
 export { default as Fill } from './Fill';
 export { default as Icon } from './Icons';
