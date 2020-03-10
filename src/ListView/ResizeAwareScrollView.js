@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ScrollViewer from 'recyclerlistview/dist/reactnative/platform/web/scrollcomponent/ScrollViewer';
-import ResizeObserver from 'utils/ResizeObserver';
+import ResizeObserver from '../utils/ResizeObserver';
 
 // Components //
 const Root = styled.div`
