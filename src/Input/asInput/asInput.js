@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useReducer } from 'react';
+import React, { useCallback, useEFfect, useMemo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring } from 'react-spring';
 import reducer from './reducer';
@@ -48,7 +48,7 @@ const asInput = WrappedComponent => ({
                 hasValue: isValid(value),
             });
         }
-    }, [value])
+    }, [value]);
 
     const handleFocus = useCallback(
         e => {
@@ -75,8 +75,8 @@ const asInput = WrappedComponent => ({
             maxLength,
             name,
             handleBlur,
-            handleChange,
             handleFocus,
+            onChange,
             type,
             value,
         ]
