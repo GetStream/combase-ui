@@ -38,7 +38,7 @@ const Field = styled.input`
 const LabelWrapper = styled.div`
     position: absolute;
     top: -8px;
-    left: ${({ hasIcon }) => (hasIcon ? 56 : 16)}px;
+    left: 16px;
 `;
 
 const Label = styled(Text)`
@@ -57,7 +57,9 @@ const LabelBg = styled(animated.div)`
 `;
 
 const IconWrapper = styled.div`
-    margin-right: 16px;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Input = ({
