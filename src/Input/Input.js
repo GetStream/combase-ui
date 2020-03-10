@@ -38,7 +38,7 @@ const Field = styled.input`
 const LabelWrapper = styled.div`
     position: absolute;
     top: -8px;
-    left: ${({ hasIcon }) => hasIcon ? 56 : 16 }px;
+    left: ${({ hasIcon }) => (hasIcon ? 56 : 16)}px;
 `;
 
 const Label = styled(Text)`
@@ -58,7 +58,7 @@ const LabelBg = styled(animated.div)`
 
 const IconWrapper = styled.div`
     margin-right: 16px;
-`
+`;
 
 const Input = ({
     error,
@@ -130,7 +130,7 @@ const Input = ({
                 ) : null}
                 <Field {...inputProps} />
                 {label ? (
-                    <LabelWrapper {...{hasIcon}}>
+                    <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
                             style={labelBgStyle}
                             width={labelDims ? labelDims.width + 4 : 0}
