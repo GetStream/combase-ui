@@ -1,6 +1,6 @@
 {
   "name": "@comba.se/ui",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "private": false,
   "description": "UI Library built for Combase White Label Chat",
   "devDependencies": {
