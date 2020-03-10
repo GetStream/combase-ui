@@ -1,243 +1,106 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { animated, useSpring } from 'react-spring';
-
-// Styles //
-import baseInputStyle from '../styles/css/baseInputStyle';
-
-// Hooks //
-import usePrevious from '../hooks/usePrevious';
-
-// Components //
-import AutosizeTextArea from '../AutosizeTextArea';
-import Card from '../Card';
+import { animated, interpolate } from 'react-spring';
 import Text from '../Text';
 
-const Root = styled(Card)`
-    flex-direction: row;
-    min-height: 48px;
-    overflow: hidden;
-    z-index: 1;
+// HOCs //
+import asInput from 'hocs/asInput';
 
-    & > input {
-        flex: 1;
-        font-weight: 500;
-        ${baseInputStyle}
-    }
+// Components //
+import HelperRow from './HelperRow';
 
-    & > textarea {
-        width: 100%;
-        min-height: 50px;
-        max-height: 288px;
-        ${baseInputStyle}
-    }
-`;
+const Root = styled.div`
 
-const IconWrapper = styled.div`
-    padding: 4px;
-    padding-left: 16px;
+`
+
+const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
-`;
+    flex-direction: row;
+    border-radius: ${({ theme }) => theme.borderRadius}px;
+    border: 2px solid ${({ focused, hasValue, theme }) => hasValue || focused ? theme.color.primary : theme.color.border};
 
-const Label = styled.div`
-    padding: 0px 12px;
-    overflow: hidden;
-    user-select: none;
-    & ${Text} {
-        align-self: flex-start;
-        padding: 4px 0px;
+    &:hover {
+        border-color: ${({ focused, hasValue, theme }) => hasValue || focused ? theme.color.primary : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
-const Placeholder = styled.div`
+const Field = styled.input`
+    flex: 1;
+    padding: 24px 16px;
+    font-size: 16px;
+    font-weight: 500;
+`;
+
+const LabelWrapper = styled.div`
     position: absolute;
-    top: ${({ textarea }) => (textarea ? '12px' : '50%')};
-    left: ${({ hasIcon }) => (hasIcon ? 56 : 12)}px;
-    transform: ${({ textarea }) => (!textarea ? 'translateY(-50%)' : null)};
+    top: -8px;
+    left: 16px;
+`;
+
+const Label = styled(Text)`
+    transform-origin: top left;
     pointer-events: none;
     user-select: none;
 `;
 
-const ErrorRow = styled.div`
-    z-index: 0;
-    padding: 0px 12px;
-    height: 16px;
-    & ${Text} {
-        align-self: flex-start;
-        padding: 4px 0px;
-    }
+const LabelBg = styled(animated.div)`
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    height: 12px;
+    background-color: ${({ theme }) => theme.color.surface};
+    transform-origin: center;
 `;
 
-const Input = ({
-    error,
-    disabled,
-    icon: Icon,
-    name,
-    onBlur,
-    onChange,
-    onFocus,
-    placeholder,
-    textarea,
-    touched,
-    type,
-    value,
-    ...rest
-}) => {
-    const prevError = usePrevious(error);
-    const [focused, setFocus] = useState(false);
-    const anim = useSpring({
-        value: !!value || focused ? 1 : 0,
-        config: { tension: 200, friction: 15 },
-    });
-    const errorAnim = useSpring({
-        value: !!error && touched && !focused ? 1 : 0,
-        config: { tension: 200, friction: 15 },
-    });
-    const handleChange = useCallback(
-        e => {
-            if (onChange) {
-                onChange(e);
-            }
-        },
-        [onChange]
-    );
+const Input = ({ error, focused, hasValue, helperText, inputProps, labelAnim, label, ...rest }) => {
+    const [labelDims, setLabelDims] = useState();
+    const labelRef = useCallback((el) => {
+        if (el && !labelDims) {
+            const dims = el.getBoundingClientRect();
+            setLabelDims(dims);
+        }
+    }, [labelDims]);
 
-    const handleFocus = useCallback(
-        e => {
-            setFocus(true);
-            if (onFocus) {
-                onFocus(e);
-            }
-        },
-        [onFocus, setFocus]
-    );
-
-    const handleBlur = useCallback(
-        e => {
-            setFocus(false);
-            if (onBlur) {
-                onBlur(e);
-            }
-        },
-        [onBlur, setFocus]
-    );
-
-    const labelStyle = useMemo(
-        () => ({
-            transform: anim.value
-                .interpolate({
-                    range: [0, 1],
-                    output: ['100%', '0%'],
-                })
-                .interpolate(v => `translate3d(0, ${v}, 0)`),
-        }),
-        [anim]
-    );
-
-    const placeholderStyle = useMemo(
-        () => ({
-            opacity: anim.value.interpolate({
+    const labelStyle = useMemo(() => ({
+        transform: interpolate([
+            labelAnim.translate.interpolate({
                 range: [0, 1],
-                output: [1, 0],
+                output: [32, 0],
             }),
-            transform: anim.value
-                .interpolate({
-                    range: [0, 1],
-                    output: ['-0%', '-50%'],
-                })
-                .interpolate(v => `translate3d(0, ${v}, 0)`),
-        }),
-        [anim]
-    );
+            labelAnim.scale.interpolate({
+                range: [0, 1],
+                output: [1.3333333333, 1],
+            })
+        ], (translate, scale) => `translate3d(0, ${translate}px, 0) scale(${scale})`),
+    }), [labelAnim.translate, labelAnim.scale]);
 
-    const errorStyle = useMemo(
-        () => ({
-            transform: errorAnim.value
-                .interpolate({
-                    range: [0, 1],
-                    output: ['-100%', '0%'],
-                })
-                .interpolate(v => `translate3d(0, ${v}, 0)`),
-        }),
-        [errorAnim]
-    );
+    const labelBgStyle = useMemo(() => ({
+        transform: labelAnim.scale.interpolate({
+            range: [0, 1],
+            output: [0, 1],
+            extrapolate: 'clamp'
+        }).interpolate(v => `scaleX(${v})`),
+    }), [labelAnim.scale]);
 
     return (
-        <div>
-            <Label>
-                <Text
-                    color="primary"
-                    as={animated.p}
-                    size={12}
-                    line={12}
-                    weight="500"
-                    style={labelStyle}
-                >
-                    {placeholder}
-                </Text>
-            </Label>
-            <Root flat border {...rest}>
-                {Icon ? (
-                    <IconWrapper>
-                        <Icon color="alt_text" />
-                    </IconWrapper>
+        <Root {...rest}>
+            <Wrapper {...{ focused, hasValue }}>
+                <Field {...inputProps} />
+                {label ? (
+                    <LabelWrapper>
+                        <LabelBg style={labelBgStyle} width={labelDims ? labelDims.width + 4 : 0} />
+                        <Label ref={labelRef} color={focused || hasValue ? "primary" : "alt_text"} as={animated.p} weight="500" size={12} style={labelStyle} faded={!hasValue && !focused}>
+                            {label}
+                        </Label>
+                    </LabelWrapper>
                 ) : null}
-                {!textarea ? (
-                    <input
-                        {...{ disabled, focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                ) : (
-                    <AutosizeTextArea
-                        {...{ disabled, focused, name, type, value }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                    />
-                )}
-                {placeholder ? (
-                    <Placeholder {...{ textarea }} hasIcon={!!Icon}>
-                        <Text
-                            as={animated.p}
-                            faded
-                            color="alt_text"
-                            weight="500"
-                            size={14}
-                            style={placeholderStyle}
-                        >
-                            {placeholder}
-                        </Text>
-                    </Placeholder>
-                ) : null}
-            </Root>
-            <ErrorRow>
-                <Text
-                    as={animated.p}
-                    color="error"
-                    size={12}
-                    line={12}
-                    weight="500"
-                    style={errorStyle}
-                >
-                    {error || prevError}
-                </Text>
-            </ErrorRow>
-        </div>
+            </Wrapper>
+            <HelperRow
+                {...{ error, helperText }}
+            />
+        </Root>
     );
-};
+}
 
-Input.propTypes = {
-    disabled: PropTypes.bool,
-    icon: PropTypes.any,
-    onBlur: PropTypes.func,
-    onChange: PropTypes.func,
-    onFocus: PropTypes.func,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
-};
-
-export default Input;
+export default asInput(Input);
