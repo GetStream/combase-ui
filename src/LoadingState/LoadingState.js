@@ -11,9 +11,9 @@ const Root = styled.div`
 `;
 
 const LoadingState = () => (
-        <Root>
-            <Loader />
-        </Root>
-    );
+    <Root>
+        <Loader />
+    </Root>
+);
 
 export default LoadingState;
