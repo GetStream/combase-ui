@@ -95,7 +95,7 @@ const Input = ({
                     }),
                     labelAnim.translate.interpolate({
                         range: [0, 1],
-                        output: [hasIcon ? 40 : 0, 0],
+                        output: [hasIcon ? 40 : 16, 0],
                     }),
                     labelAnim.scale.interpolate({
                         range: [0, 1],
