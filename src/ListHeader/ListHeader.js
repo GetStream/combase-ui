@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Animated from 'animated/lib/targets/react-dom';
 
 // Hooks //
-import useMedia from 'hooks/useMedia';
+import useMedia from '../hooks/useMedia';
 
 // Components //
 import ActionsGroup from '../ActionsGroup';
@@ -89,7 +89,9 @@ const ListHeader = ({
         <Root {...{ bgColor, style }}>
             <TitleWrapper {...{ bgColor, showSearch }}>
                 <Title>
-                    {LeftBtnElement ? <LeftElement as={LeftBtnElement} /> : null}
+                    {LeftBtnElement ? (
+                        <LeftElement as={LeftBtnElement} />
+                    ) : null}
                     {Icon ? <Icon color="text" size={24} /> : null}
                     <Text size={isMobile ? 20 : 24} weight="600">
                         {title}

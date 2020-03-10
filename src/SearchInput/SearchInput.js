@@ -23,12 +23,12 @@ const Input = styled.input`
 `;
 
 const SearchInput = () => (
-        <Root>
-            <IconWrapper>
-                <SearchIcon color="gray" />
-            </IconWrapper>
-            <Input placeholder="Search..." />
-        </Root>
-    );
+    <Root>
+        <IconWrapper>
+            <SearchIcon color="gray" />
+        </IconWrapper>
+        <Input placeholder="Search..." />
+    </Root>
+);
 
 export default SearchInput;
