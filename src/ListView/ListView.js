@@ -41,9 +41,7 @@ class ListView extends Component {
     constructor(props) {
         super(props);
 
-        const dataProvider = new DataProvider((r1, r2) => {
-            return r1 !== r2;
-        });
+        const dataProvider = new DataProvider((r1, r2) => r1 !== r2);
 
         this.state = {
             width: 0,
@@ -83,7 +81,7 @@ class ListView extends Component {
     ]);
 
     generateArray(n) {
-        let arr = new Array(n);
+        const arr = new Array(n);
         for (let i = 0; i < n; i++) {
             arr[i] = i;
         }
@@ -135,9 +133,13 @@ class ListView extends Component {
             return (
                 <>
                     {showEmptyHeader ? <ListHeaderComponent /> : null}
-                    {ListLoadingComponent ? <ListLoadingComponent /> : <LoadingState />}
+                    {ListLoadingComponent ? (
+                        <ListLoadingComponent />
+                    ) : (
+                        <LoadingState />
+                    )}
                 </>
-            )
+            );
         }
 
         if (!data || rowCount === 0) {
