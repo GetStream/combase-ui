@@ -38,7 +38,7 @@ const Field = styled.input`
 const LabelWrapper = styled.div`
     position: absolute;
     top: -8px;
-    left: 16px;
+    left: ${({ hasIcon }) => hasIcon ? 56 : 16 }px;
 `;
 
 const Label = styled(Text)`
@@ -56,16 +56,22 @@ const LabelBg = styled(animated.div)`
     transform-origin: center;
 `;
 
+const IconWrapper = styled.div`
+    margin-right: 16px;
+`
+
 const Input = ({
     error,
     focused,
     hasValue,
     helperText,
+    icon: Icon,
     inputProps,
     labelAnim,
     label,
     ...rest
 }) => {
+    const hasIcon = !!Icon;
     const [labelDims, setLabelDims] = useState();
     const labelRef = useCallback(
         el => {
@@ -85,13 +91,17 @@ const Input = ({
                         range: [0, 1],
                         output: [32, 0],
                     }),
+                    labelAnim.translate.interpolate({
+                        range: [0, 1],
+                        output: [hasIcon ? 40 : 0, 0],
+                    }),
                     labelAnim.scale.interpolate({
                         range: [0, 1],
                         output: [1.3333333333, 1],
                     }),
                 ],
-                (translate, scale) =>
-                    `translate3d(0, ${translate}px, 0) scale(${scale})`
+                (translateY, translateX, scale) =>
+                    `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`
             ),
         }),
         [labelAnim.translate, labelAnim.scale]
@@ -113,9 +123,14 @@ const Input = ({
     return (
         <Root {...rest}>
             <Wrapper {...{ focused, hasValue }}>
+                {Icon ? (
+                    <IconWrapper>
+                        <Icon size={24} color="text" />
+                    </IconWrapper>
+                ) : null}
                 <Field {...inputProps} />
                 {label ? (
-                    <LabelWrapper>
+                    <LabelWrapper {...{hasIcon}}>
                         <LabelBg
                             style={labelBgStyle}
                             width={labelDims ? labelDims.width + 4 : 0}
