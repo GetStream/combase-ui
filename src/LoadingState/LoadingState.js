@@ -10,12 +10,10 @@ const Root = styled.div`
     align-items: center;
 `;
 
-const LoadingState = () => {
-    return (
+const LoadingState = () => (
         <Root>
             <Loader />
         </Root>
     );
-};
 
 export default LoadingState;

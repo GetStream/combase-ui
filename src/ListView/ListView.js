@@ -9,7 +9,7 @@ import {
 } from 'recyclerlistview/web';
 
 // Components //
-import LoadingState from 'shared/LoadingState';
+import LoadingState from '../LoadingState';
 import ResizeAwareScrollView from './ResizeAwareScrollView';
 
 const itemAnimator = new BaseItemAnimator();
