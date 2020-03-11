@@ -19,8 +19,9 @@ export default createGlobalStyle`
     margin: 0;
     height: 100vh;
     overflow: hidden;
-    font-family: "Circular Std", sans-serif;
+    font-family: "Cerebri Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   img {
