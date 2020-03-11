@@ -82,7 +82,9 @@ export default createGlobalStyle`
     border: 0;
     background: none;
     font-size: 16px;
-    font-family: "Circular Std", sans-serif;
+    font-family: "Cerebri Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     &::-webkit-input-placeholder {
         color: ${({ theme }) => theme.color.gray};
