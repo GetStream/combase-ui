@@ -31,7 +31,7 @@ export default createGlobalStyle`
   #root {
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     overflow: hidden;
     flex: 1;
     height: 100%;
