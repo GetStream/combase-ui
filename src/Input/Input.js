@@ -90,15 +90,15 @@ const Input = ({
         () => ({
             transform: interpolate(
                 [
-                    labelAnim.translate.interpolate({
+                    labelAnim.value.interpolate({
                         range: [0, 1],
                         output: [32, 0],
                     }),
-                    labelAnim.translate.interpolate({
+                    labelAnim.value.interpolate({
                         range: [0, 1],
                         output: [hasIcon ? 40 : 0, 0],
                     }),
-                    labelAnim.scale.interpolate({
+                    labelAnim.value.interpolate({
                         range: [0, 1],
                         output: [1.3333333333, 1],
                     }),
@@ -107,12 +107,12 @@ const Input = ({
                     `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`
             ),
         }),
-        [labelAnim.translate, labelAnim.scale]
+        [labelAnim.value]
     );
 
     const labelBgStyle = useMemo(
         () => ({
-            transform: labelAnim.scale
+            transform: labelAnim.value
                 .interpolate({
                     range: [0, 1],
                     output: [0, 1],
@@ -120,7 +120,7 @@ const Input = ({
                 })
                 .interpolate(v => `scaleX(${v})`),
         }),
-        [labelAnim.scale]
+        [labelAnim.value]
     );
 
     return (

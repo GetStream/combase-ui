@@ -88,8 +88,7 @@ const asInput = WrappedComponent => ({
     );
 
     const labelAnim = useSpring({
-        translate: state.hasValue || state.focused ? 1 : 0,
-        scale: state.hasValue || state.focused ? 1 : 0,
+        value: state.hasValue || state.focused ? 1 : 0,
         config: { mass: 1, tension: 500, friction: 30 },
     });
 
