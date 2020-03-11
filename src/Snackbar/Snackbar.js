@@ -62,7 +62,8 @@ class Snackbar extends PureComponent {
         }
     }
 
-    show = () => new Promise((res, rej) => {
+    show = () =>
+        new Promise((res, rej) => {
             this.setState(
                 {
                     mount: true,
@@ -77,7 +78,8 @@ class Snackbar extends PureComponent {
             );
         });
 
-    hide = () => new Promise((res, rej) => {
+    hide = () =>
+        new Promise((res, rej) => {
             Animated.timing(this.anim, {
                 toValue: 0,
                 duration: 200,
