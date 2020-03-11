@@ -65,6 +65,7 @@
     "autosize": "^4.0.2",
     "browser-monads": "^1.0.0",
     "react-color": "shreshthmohan/react-color",
-    "react-content-loader": "^5.0.2"
+    "react-content-loader": "^5.0.2",
+    "uuid": "^7.0.2"
   }
 }

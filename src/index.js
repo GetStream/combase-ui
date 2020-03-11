@@ -22,6 +22,7 @@ export { default as LoadingState } from './LoadingState';
 export { default as PlaceholderIcon } from './PlaceholderIcon';
 export { default as Portal } from './Portal';
 export { default as SearchInput } from './SearchInput';
+export { default as Snackbar } from './Snackbar';
 export { default as StatusBadge } from './StatusBadge';
 export { default as Text } from './Text';
 
