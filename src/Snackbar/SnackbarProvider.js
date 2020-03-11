@@ -60,7 +60,7 @@ class SnackbarProvider extends Component {
     handleHideSnack = async () => {
         const { replace } = this.state;
         if (replace) {
-            this.addSnackbar(replace);
+            await this.addSnackbar(replace);
         }
     };
 
