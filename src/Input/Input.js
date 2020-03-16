@@ -7,6 +7,7 @@ import Text from '../Text';
 import asInput from './asInput';
 
 // Components //
+import AutosizeTextArea from './AutosizeTextArea';
 import HelperRow from './HelperRow';
 
 const Root = styled.div``;
@@ -72,6 +73,7 @@ const Input = ({
     inputProps,
     labelAnim,
     label,
+    multiline,
     ...rest
 }) => {
     const hasIcon = !!Icon;
@@ -131,7 +133,7 @@ const Input = ({
                         <Icon size={24} color="text" />
                     </IconWrapper>
                 ) : null}
-                <Field {...inputProps} />
+                {!multiline ? <Field {...inputProps} /> : <AutosizeTextArea {...inputProps} />}
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
