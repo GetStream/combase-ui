@@ -152,7 +152,7 @@ const Input = ({
                     disabled={select}
                 />
                 {select ? (
-                    <SelectField ref={selectField} {...{children}} />
+                    <SelectField ref={selectField} {...{ children }} />
                 ) : null}
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
