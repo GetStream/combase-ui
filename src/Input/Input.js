@@ -7,7 +7,7 @@ import Text from '../Text';
 import asInput from './asInput';
 
 // Components //
-import AutosizeTextArea from './AutosizeTextArea';
+import AutosizeTextArea from '../AutosizeTextArea';
 import HelperRow from './HelperRow';
 
 const Root = styled.div``;
