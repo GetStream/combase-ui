@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { animated, interpolate } from 'react-spring';
 import Text from '../Text';
@@ -64,7 +64,12 @@ const IconWrapper = styled.div`
     align-items: center;
 `;
 
+const SelectField = styled.select`
+    display: none;
+`;
+
 const Input = ({
+    children,
     error,
     focused,
     hasValue,
@@ -74,9 +79,11 @@ const Input = ({
     labelAnim,
     label,
     multiline,
+    select,
     ...rest
 }) => {
     const hasIcon = !!Icon;
+    const selectField = useRef();
     const [labelDims, setLabelDims] = useState();
     const labelRef = useCallback(
         el => {
@@ -125,8 +132,14 @@ const Input = ({
         [labelAnim.value]
     );
 
+    const handleClick = useCallback(() => {
+        if (select) {
+            selectField.current.click();
+        }
+    }, [select]);
+
     return (
-        <Root {...rest}>
+        <Root {...rest} onClick={handleClick}>
             <Wrapper {...{ focused, hasValue }}>
                 {Icon ? (
                     <IconWrapper>
@@ -134,9 +147,13 @@ const Input = ({
                     </IconWrapper>
                 ) : null}
                 <Field
-                    as={multiline ? AutosizeTextArea : 'input'}
+                    as={multiline && !select ? AutosizeTextArea : 'input'}
                     {...inputProps}
+                    disabled={select}
                 />
+                {select ? (
+                    <SelectField ref={selectField} {...{children}} />
+                ) : null}
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
