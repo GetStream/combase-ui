@@ -133,11 +133,7 @@ const Input = ({
                         <Icon size={24} color="text" />
                     </IconWrapper>
                 ) : null}
-                {!multiline ? (
-                    <Field {...inputProps} />
-                ) : (
-                    <AutosizeTextArea {...inputProps} />
-                )}
+                <Field as={multiline ? AutosizeTextArea : "input"} {...inputProps} />
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
