@@ -19,13 +19,13 @@ const Wrapper = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius}px;
     border: 2px solid
         ${({ focused, hasValue, theme }) =>
-        hasValue || focused ? theme.color.primary : theme.color.border};
+            hasValue || focused ? theme.color.primary : theme.color.border};
 
     &:hover {
         border-color: ${({ focused, hasValue, theme }) =>
-        hasValue || focused
-            ? theme.color.primary
-            : theme.colorUtils.darken(theme.color.border, 0.05)};
+            hasValue || focused
+                ? theme.color.primary
+                : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
@@ -40,8 +40,8 @@ const Field = styled.input`
         border: none;
         font-size: 16px;
         color: ${({ theme }) => theme.color.text};
-        font-family: "Cerebri Sans", sans-serif;
-        padding-right: calc(16px + ${({ select }) => select ? 56 : 0}px);
+        font-family: 'Cerebri Sans', sans-serif;
+        padding-right: calc(16px + ${({ select }) => (select ? 56 : 0)}px);
     }
 `;
 
@@ -83,8 +83,9 @@ const SelectDropdown = styled.div`
     align-items: center;
     pointer-events: none;
     & svg {
-        transition: 0.3s transform ${({ theme }) => theme.easing.css(theme.easing.standard)};
-        transform: rotate(${({ focused }) => focused ? 180 : 0}deg);
+        transition: 0.3s transform
+            ${({ theme }) => theme.easing.css(theme.easing.standard)};
+        transform: rotate(${({ focused }) => (focused ? 180 : 0)}deg);
     }
 `;
 
@@ -162,7 +163,13 @@ const Input = ({
                 ) : null}
                 <Field
                     {...{ select }}
-                    as={select ? 'select' : multiline ? AutosizeTextArea : 'input'}
+                    as={
+                        select
+                            ? 'select'
+                            : multiline
+                            ? AutosizeTextArea
+                            : 'input'
+                    }
                     {...inputProps}
                 >
                     {select && children ? children : null}
@@ -186,13 +193,11 @@ const Input = ({
                         </Label>
                     </LabelWrapper>
                 ) : null}
-                {
-                    select ? (
-                        <SelectDropdown {...{ focused }}>
-                            <DropdownArrowIcon color="alt_text" />
-                        </SelectDropdown>
-                    ) : null
-                }
+                {select ? (
+                    <SelectDropdown {...{ focused }}>
+                        <DropdownArrowIcon color="alt_text" />
+                    </SelectDropdown>
+                ) : null}
             </Wrapper>
             <HelperRow {...{ error, helperText }} />
         </Root>
