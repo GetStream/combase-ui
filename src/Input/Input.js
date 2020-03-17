@@ -1,13 +1,14 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { animated, interpolate } from 'react-spring';
-import { AutosizeTextArea, Text } from '@comba.se/ui';
-import { DropdownArrowIcon } from '@comba.se/ui/Icons';
 
 // HOCs //
 import asInput from './asInput';
 
 // Components //
+import AutosizeTextArea from '../AutosizeTextArea';
+import Input from '../Input';
+import { DropdownArrowIcon } from '../Icons';
 import HelperRow from './HelperRow';
 
 const Root = styled.div``;
@@ -19,13 +20,13 @@ const Wrapper = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius}px;
     border: 2px solid
         ${({ focused, hasValue, theme }) =>
-            hasValue || focused ? theme.color.primary : theme.color.border};
+        hasValue || focused ? theme.color.primary : theme.color.border};
 
     &:hover {
         border-color: ${({ focused, hasValue, theme }) =>
-            hasValue || focused
-                ? theme.color.primary
-                : theme.colorUtils.darken(theme.color.border, 0.05)};
+        hasValue || focused
+            ? theme.color.primary
+            : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
@@ -167,8 +168,8 @@ const Input = ({
                         select
                             ? 'select'
                             : multiline
-                            ? AutosizeTextArea
-                            : 'input'
+                                ? AutosizeTextArea
+                                : 'input'
                     }
                     {...inputProps}
                 >
