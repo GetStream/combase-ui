@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { animated, interpolate } from 'react-spring';
-import Text from '../Text';
+import { AutosizeTextArea, Text } from '@comba.se/ui';
+import { DropdownArrowIcon } from '@comba.se/ui/Icons';
 
 // HOCs //
 import asInput from './asInput';
 
 // Components //
-import AutosizeTextArea from '../AutosizeTextArea';
 import HelperRow from './HelperRow';
 
 const Root = styled.div``;
@@ -19,13 +19,13 @@ const Wrapper = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius}px;
     border: 2px solid
         ${({ focused, hasValue, theme }) =>
-            hasValue || focused ? theme.color.primary : theme.color.border};
+        hasValue || focused ? theme.color.primary : theme.color.border};
 
     &:hover {
         border-color: ${({ focused, hasValue, theme }) =>
-            hasValue || focused
-                ? theme.color.primary
-                : theme.colorUtils.darken(theme.color.border, 0.05)};
+        hasValue || focused
+            ? theme.color.primary
+            : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
@@ -34,6 +34,15 @@ const Field = styled.input`
     padding: 24px 16px;
     font-size: 16px;
     font-weight: 500;
+    select& {
+        appearance: none;
+        background: none;
+        border: none;
+        font-size: 16px;
+        color: ${({ theme }) => theme.color.text};
+        font-family: "Cerebri Sans", sans-serif;
+        padding-right: calc(16px + ${({ select }) => select ? 56 : 0}px);
+    }
 `;
 
 const LabelWrapper = styled.div`
@@ -64,7 +73,23 @@ const IconWrapper = styled.div`
     align-items: center;
 `;
 
+const SelectDropdown = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    & svg {
+        transition: 0.3s transform ${({ theme }) => theme.easing.css(theme.easing.standard)};
+        transform: rotate(${({ focused }) => focused ? 180 : 0}deg);
+    }
+`;
+
 const Input = ({
+    children,
     error,
     focused,
     hasValue,
@@ -74,6 +99,7 @@ const Input = ({
     labelAnim,
     label,
     multiline,
+    select,
     ...rest
 }) => {
     const hasIcon = !!Icon;
@@ -135,9 +161,12 @@ const Input = ({
                     </IconWrapper>
                 ) : null}
                 <Field
-                    as={multiline ? AutosizeTextArea : 'input'}
+                    {...{ select }}
+                    as={select ? 'select' : multiline ? AutosizeTextArea : 'input'}
                     {...inputProps}
-                />
+                >
+                    {select && children ? children : null}
+                </Field>
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
@@ -157,6 +186,13 @@ const Input = ({
                         </Label>
                     </LabelWrapper>
                 ) : null}
+                {
+                    select ? (
+                        <SelectDropdown {...{ focused }}>
+                            <DropdownArrowIcon color="alt_text" />
+                        </SelectDropdown>
+                    ) : null
+                }
             </Wrapper>
             <HelperRow {...{ error, helperText }} />
         </Root>
