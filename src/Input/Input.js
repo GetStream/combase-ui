@@ -64,12 +64,7 @@ const IconWrapper = styled.div`
     align-items: center;
 `;
 
-const SelectField = styled.select`
-    display: none;
-`;
-
 const Input = ({
-    children,
     error,
     focused,
     hasValue,
@@ -79,7 +74,6 @@ const Input = ({
     labelAnim,
     label,
     multiline,
-    select,
     ...rest
 }) => {
     const hasIcon = !!Icon;
@@ -132,14 +126,8 @@ const Input = ({
         [labelAnim.value]
     );
 
-    const handleClick = useCallback(() => {
-        if (select) {
-            selectField.current.click();
-        }
-    }, [select]);
-
     return (
-        <Root {...rest} onClick={handleClick}>
+        <Root {...rest}>
             <Wrapper {...{ focused, hasValue }}>
                 {Icon ? (
                     <IconWrapper>
@@ -147,13 +135,9 @@ const Input = ({
                     </IconWrapper>
                 ) : null}
                 <Field
-                    as={multiline && !select ? AutosizeTextArea : 'input'}
+                    as={multiline ? AutosizeTextArea : 'input'}
                     {...inputProps}
-                    disabled={select}
                 />
-                {select ? (
-                    <SelectField ref={selectField} {...{ children }} />
-                ) : null}
                 {label ? (
                     <LabelWrapper {...{ hasIcon }}>
                         <LabelBg
