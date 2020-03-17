@@ -7,7 +7,7 @@ import asInput from './asInput';
 
 // Components //
 import AutosizeTextArea from '../AutosizeTextArea';
-import Input from '../Input';
+import Text from '../Text';
 import { DropdownArrowIcon } from '../Icons';
 import HelperRow from './HelperRow';
 
