@@ -20,13 +20,13 @@ const Wrapper = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius}px;
     border: 2px solid
         ${({ focused, hasValue, theme }) =>
-        hasValue || focused ? theme.color.primary : theme.color.border};
+            hasValue || focused ? theme.color.primary : theme.color.border};
 
     &:hover {
         border-color: ${({ focused, hasValue, theme }) =>
-        hasValue || focused
-            ? theme.color.primary
-            : theme.colorUtils.darken(theme.color.border, 0.05)};
+            hasValue || focused
+                ? theme.color.primary
+                : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
@@ -36,7 +36,7 @@ const Field = styled.input`
     font-size: 16px;
     font-weight: 500;
     color: ${({ theme }) => theme.color.text};
-    
+
     select& {
         appearance: none;
         background: none;
@@ -170,8 +170,8 @@ const Input = ({
                         select
                             ? 'select'
                             : multiline
-                                ? AutosizeTextArea
-                                : 'input'
+                            ? AutosizeTextArea
+                            : 'input'
                     }
                     {...inputProps}
                 >
