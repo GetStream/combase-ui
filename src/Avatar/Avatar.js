@@ -48,7 +48,7 @@ const Avatar = ({
     <div>
         <Root {...{ className, onClick, size }}>
             {!src ? (
-                <Text color="white" size={size / 2} weight="600">
+                <Text color="red" size={size / 2} weight="600">
                     {name.charAt(0)}
                 </Text>
             ) : (

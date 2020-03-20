@@ -9,6 +9,7 @@ const Root = styled.textarea`
     resize: none;
     border-box: content-box;
     line-height: 24px;
+    color: ${({ theme }) => theme.color.text};
 `;
 
 const AutoSizeTextArea = props => {

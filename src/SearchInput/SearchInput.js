@@ -20,6 +20,7 @@ const IconWrapper = styled.div`
 const Input = styled.input`
     flex: 1;
     padding-right: 12px;
+    color: ${({ theme }) => theme.color.text};
 `;
 
 const SearchInput = () => (
