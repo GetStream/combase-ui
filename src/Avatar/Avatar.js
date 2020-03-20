@@ -45,27 +45,27 @@ const Avatar = ({
     statusBorder,
     statusProps,
 }) => (
-    <div>
-        <Root {...{ className, onClick, size }}>
-            {!src ? (
-                <Text color="red" size={size / 2} weight="600">
-                    {name.charAt(0)}
-                </Text>
-            ) : (
-                <img alt={name} {...{ src }} />
-            )}
-        </Root>
-        {showStatus ? (
-            <Status
-                as={statusComponent || StatusBadge}
-                size={size / 3}
-                borderColor={statusBorder}
-                {...{ status }}
-                {...statusProps}
-            />
-        ) : null}
-    </div>
-);
+        <div>
+            <Root {...{ className, onClick, size }}>
+                {!src ? (
+                    <Text color="white" size={size / 2} weight="600">
+                        {name.charAt(0)}
+                    </Text>
+                ) : (
+                        <img alt={name} {...{ src }} />
+                    )}
+            </Root>
+            {showStatus ? (
+                <Status
+                    as={statusComponent || StatusBadge}
+                    size={size / 3}
+                    borderColor={statusBorder}
+                    {...{ status }}
+                    {...statusProps}
+                />
+            ) : null}
+        </div>
+    );
 
 Avatar.propTypes = {
     name: PropTypes.string.isRequired,
