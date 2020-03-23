@@ -16,12 +16,13 @@ class ExternalScrollView extends Component {
     scrollView = React.createRef();
 
     componentDidMount() {
-        const { clientWidth, clientHeight } = this.root.current;
-        this.updateDimensions(clientWidth, clientHeight);
         this.initResizeObservation();
     }
 
     initResizeObservation = () => {
+        const { clientWidth, clientHeight } = this.root.current;
+        this.updateDimensions(clientWidth, clientHeight);
+
         this.observer = new ResizeObserver(this.handleResize);
         this.observer.observe(this.root.current);
     };
