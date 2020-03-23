@@ -20,13 +20,13 @@ const Wrapper = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius}px;
     border: 2px solid
         ${({ focused, hasValue, theme }) =>
-            hasValue || focused ? theme.color.primary : theme.color.border};
+        hasValue || focused ? theme.color.primary : theme.color.border};
 
     &:hover {
         border-color: ${({ focused, hasValue, theme }) =>
-            hasValue || focused
-                ? theme.color.primary
-                : theme.colorUtils.darken(theme.color.border, 0.05)};
+        hasValue || focused
+            ? theme.color.primary
+            : theme.colorUtils.darken(theme.color.border, 0.05)};
     }
 `;
 
@@ -45,6 +45,10 @@ const Field = styled.input`
         color: ${({ theme }) => theme.color.text};
         font-family: 'Cerebri Sans', sans-serif;
         padding-right: calc(16px + ${({ select }) => (select ? 56 : 0)}px);
+    }
+
+    textarea& {
+        padding: 16px;
     }
 `;
 
@@ -170,8 +174,8 @@ const Input = ({
                         select
                             ? 'select'
                             : multiline
-                            ? AutosizeTextArea
-                            : 'input'
+                                ? AutosizeTextArea
+                                : 'input'
                     }
                     {...inputProps}
                 >
