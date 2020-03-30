@@ -1,5 +1,6 @@
 import React, { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Animated from 'animated/lib/targets/react-dom';
 import {
     DataProvider,
@@ -13,6 +14,12 @@ import LoadingState from '../LoadingState';
 import ResizeAwareScrollView from './ResizeAwareScrollView';
 
 const itemAnimator = new BaseItemAnimator();
+
+const Empty = styled.div`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
 
 class ListView extends Component {
     static propTypes = {
@@ -131,23 +138,23 @@ class ListView extends Component {
 
         if (loading) {
             return (
-                <>
+                <Empty>
                     {showEmptyHeader ? <ListHeaderComponent /> : null}
                     {ListLoadingComponent ? (
                         <ListLoadingComponent />
                     ) : (
                         <LoadingState />
                     )}
-                </>
+                </Empty>
             );
         }
 
-        if (!data || rowCount === 0) {
+        if (!data || !data.length || rowCount === 0) {
             return (
-                <>
+                <Empty>
                     {showEmptyHeader ? <ListHeaderComponent /> : null}
                     {ListEmptyComponent ? <ListEmptyComponent /> : null}
-                </>
+                </Empty>
             );
         }
 
