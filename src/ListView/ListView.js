@@ -143,8 +143,8 @@ class ListView extends Component {
                     {ListLoadingComponent ? (
                         <ListLoadingComponent />
                     ) : (
-                            <LoadingState />
-                        )}
+                        <LoadingState />
+                    )}
                 </>
             );
         }
