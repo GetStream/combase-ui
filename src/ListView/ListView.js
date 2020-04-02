@@ -138,18 +138,23 @@ class ListView extends Component {
 
         if (loading) {
             return (
-                <Empty>
+                <>
                     {showEmptyHeader ? <ListHeaderComponent /> : null}
                     {ListLoadingComponent ? (
                         <ListLoadingComponent />
                     ) : (
-                        <LoadingState />
-                    )}
-                </Empty>
+                            <LoadingState />
+                        )}
+                </>
             );
         }
 
-        if (!data || !data.length || rowCount === 0) {
+        if (
+            !data ||
+            data.length === 0 ||
+            dataProvider._size === 0 ||
+            rowCount === 0
+        ) {
             return (
                 <Empty>
                     {showEmptyHeader ? <ListHeaderComponent /> : null}
@@ -182,8 +187,8 @@ class ListView extends Component {
                 }}
                 onScroll={this.handleScroll}
                 extendedState={extendedState || { data }}
-                rowRenderer={this.renderRow}
                 onResize={this.handleResize}
+                rowRenderer={this.renderRow}
             />
         );
     }
