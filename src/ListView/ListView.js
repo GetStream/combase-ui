@@ -17,8 +17,6 @@ const itemAnimator = new BaseItemAnimator();
 
 const Empty = styled.div`
     flex: 1;
-    justify-content: center;
-    align-items: center;
 `;
 
 class ListView extends Component {

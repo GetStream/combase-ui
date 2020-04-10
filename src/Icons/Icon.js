@@ -28,7 +28,6 @@ const Icon = ({
 
 Icon.propTypes = {
     color: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired,
     size: PropTypes.number.isRequired,
 };
 
